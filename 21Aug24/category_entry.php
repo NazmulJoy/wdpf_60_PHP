@@ -14,10 +14,10 @@
         $sql = "INSERT INTO catergories (cate_name) VALUES ('$cate_name')";
         $result = $db->query($sql);
 
-        if ($db->affected_rows) {
-            echo "Category Successfully Added";
+        if($db->error){
+            echo "Failed";
         } else {
-            echo "Failed to Add Category";
+            echo "success";
         }
     }
     ?>

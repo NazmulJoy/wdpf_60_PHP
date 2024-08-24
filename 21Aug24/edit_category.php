@@ -16,10 +16,10 @@
         $sql = "UPDATE catergories SET cate_name = '$cate_name' WHERE cate_id = '$id'";
         $result = $db->query($sql);
 
-        if ($db->affected_rows) {
-            echo "Category Successfully Updated";
+        if($db->error){
+            echo "Failed";
         } else {
-            echo "Failed to Update Category";
+            echo "success";
         }
     }
 

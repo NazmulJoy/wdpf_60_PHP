@@ -9,19 +9,21 @@
 <body>
     <h3>Product Entry</h3>
     <?php
+    //Category list collect
         $sql = "SELECT * FROM catergories";
         $cate = $db->query($sql);
 
 
         if(isset($_POST['submit'])){
             extract($_POST);
-            $sql = "INSERT INTO products (id, product_name, product_details, product_price, product_quantity,pruduct_category) VALUES (NULL,'$product','$details','$price','$quantity','$category')";
+            $sql = "INSERT INTO products (id, product_name, product_details, product_price, product_quantity,product_category) VALUES (NULL,'$product','$details','$price','$quantity','$category')";
             
             $result = $db->query($sql);
-            if($db->affected_rows){
-                echo "Succesfully Added";
-            } else {
+
+            if($db->error){
                 echo "Failed";
+            } else {
+                echo "success";
             }
         }
     
