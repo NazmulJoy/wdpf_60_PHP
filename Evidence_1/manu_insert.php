@@ -1,4 +1,4 @@
-<?php $mysql = new mysqli("localhost:3310","root","","evidence_exam"); ?>
+<?php $mysql = new mysqli("localhost:3310","root","","company"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +10,8 @@
     <h3>New manufacturer</h3>
     <?php
     if(isset($_POST['submit'])){
-        extract($_POST);
-        if($mysql->query("CALL add_manufacturer('$name','$address','$contact')")){
+         extract($_POST);
+        if($mysql->query("CALL insert_manufacturer('$name','$address','$contact')")){
             echo "<h3>Successfully Added</h3>";
         } else{
             echo "Failed";
