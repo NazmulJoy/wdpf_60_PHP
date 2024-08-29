@@ -10,11 +10,15 @@
     <?php
     if(isset($_POST['submit'])){
         extract($_POST);
+        if (!empty($name) && !empty($address) && !empty($contact)) {
         $db->query("CALL add_manufacturer('$name','$address','$contact')");
         if($db->error){
             echo "Failed to add";
         } else { 
             echo "Successfully added";
+        }
+        } else {
+            echo "<h3>All fields are required.</h3>";
         }
     }  
     ?>

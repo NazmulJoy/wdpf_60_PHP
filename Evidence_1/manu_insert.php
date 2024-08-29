@@ -11,11 +11,16 @@
     <?php
     if(isset($_POST['submit'])){
          extract($_POST);
-         $mysql->query("CALL insert_manufacturer('$name','$address','$contact')");
-        if($mysql->error){
-            echo "<h3>Successfully Added</h3>";
-        } else{
-            echo "Failed";
+        if (!empty($name) && !empty($address) && !empty($contact)) {
+            // Execute the query only if all fields are filled
+            $mysql->query("CALL insert_manufacturer('$name', '$address', '$contact')");
+            if ($mysql->error) {
+                echo "<h3>Failed to Add</h3>";
+            } else {
+                echo "<h3>Successfully Added</h3>";
+            }
+        } else {
+            echo "<h3>All fields are required.</h3>";
         }
     } 
      ?>
