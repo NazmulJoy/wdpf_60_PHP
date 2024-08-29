@@ -11,7 +11,8 @@
     <?php
     if(isset($_POST['submit'])){
          extract($_POST);
-        if($mysql->query("CALL insert_manufacturer('$name','$address','$contact')")){
+         $mysql->query("CALL insert_manufacturer('$name','$address','$contact')");
+        if($mysql->error){
             echo "<h3>Successfully Added</h3>";
         } else{
             echo "Failed";
